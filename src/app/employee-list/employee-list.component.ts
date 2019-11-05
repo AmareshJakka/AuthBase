@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-
-  constructor() { }
+  employees;
+  selectedEmp;
+  constructor(public dataService:DataService) { }
 
   ngOnInit() {
+    this.employees = this.dataService.getEmployees();
+  }
+  public selectEmployee(employee){
+    this.selectedEmp = employee;
   }
 
 }
